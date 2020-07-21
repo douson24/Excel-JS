@@ -61,9 +61,19 @@
     outline: none;
 
     &.selected {
+      position: relative;
       border: none;
-      outline: 2px solid $primary-color;
       z-index: 2;
+
+      &:after {
+        position: absolute;
+        top: 0;
+        height: calc(100% - 2px);
+        left: 0;
+        width: calc(100% - 2px);
+        content: '';
+        outline: 2px solid $primary-color;
+      }
     }
   }
 
