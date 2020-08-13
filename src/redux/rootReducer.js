@@ -1,4 +1,11 @@
-import {CHANGE_TEXT, CHANGE_STYLES, TABLE_RESIZE, APPLY_STYLE, CHANGE_TITLE} from '@/redux/variables'
+import {
+    CHANGE_TEXT,
+    CHANGE_STYLES,
+    TABLE_RESIZE,
+    APPLY_STYLE,
+    CHANGE_TITLE,
+    UPDATE_DATE_CREATED
+} from '@/redux/variables'
 
 export function rootReducer(state, action) {
     let field
@@ -9,6 +16,7 @@ export function rootReducer(state, action) {
             return {...state, [field]: value(state, field, action)}
         case CHANGE_TEXT:
             field = 'dataState'
+            console.log('Current text: ', action.data.value)
             return {...state, currentText: action.data.value, [field]: value(state, field, action)}
         case CHANGE_STYLES:
             return {...state, currentStyles: action.data}
@@ -21,6 +29,8 @@ export function rootReducer(state, action) {
             return {...state, [field]: val, currentStyles: {...state.currentStyles, ...action.data.value}}
         case CHANGE_TITLE:
             return {...state, title: action.data}
+        case UPDATE_DATE_CREATED:
+            return {...state, created: new Date().toJSON()}
         default: return state
     }
 }
