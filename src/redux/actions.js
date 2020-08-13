@@ -1,4 +1,5 @@
 import {CHANGE_TEXT, CHANGE_STYLES, TABLE_RESIZE, APPLY_STYLE, CHANGE_TITLE} from './variables';
+import {UPDATE_DATE_CREATED} from '@/redux/variables';
 
 export function tableResize(data) {
     return {
@@ -32,5 +33,11 @@ export function changeTitle(data) {
     return {
         type: CHANGE_TITLE,
         data
+    }
+}
+
+export function updateDateCreated() {
+    return {
+        type: UPDATE_DATE_CREATED
     }
 }
